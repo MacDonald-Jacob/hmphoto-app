@@ -9,7 +9,6 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-  // .get('/home', (req, res) => res.render('pages/index'))
   .get('/packages', (req, res) => res.render('pages/packages'))
   .get('/login', (req, res) => res.render('pages/login'))
 
