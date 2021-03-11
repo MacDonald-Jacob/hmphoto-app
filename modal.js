@@ -1,6 +1,8 @@
 
+require('dotenv').config();
+
 const { Pool } = require('pg')
-const connectionString = process.env.DATABASE_URL || "postgres://xwpbeeqsljswvs:c31d571bef07969c64075135bd2be5568be0373140d3aa832c49f6135169c6c4@ec2-54-164-22-242.compute-1.amazonaws.com:5432/d2v78ukgtp9soq?ssl=true";
+const connectionString = process.env.DATABASE_URL;
 const pool = new Pool({connectionString: connectionString});
 
 module.exports = {
