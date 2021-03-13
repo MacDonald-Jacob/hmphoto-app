@@ -1,7 +1,6 @@
 var modal = require('./modal');
 var functions = require('./functions');
 
-
 const express = require('express')
 var session = require('express-session');
 var bodyParser = require('body-parser');
@@ -27,7 +26,14 @@ express()
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-  
-if (typeof message == 'undefined' || message == null){
-  message = "";
-}
+
+
+  // Take care of messages throughout the site. 
+  if (typeof message == 'undefined' || message == null){
+    message = "";
+  }
+  if (typeof loginMessage == 'undefined' || loginMessage == null){
+    loginMessage = "";
+  }
+
+ 

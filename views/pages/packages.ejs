@@ -6,13 +6,27 @@
 
 <body>
   <header>
-    <h1 id="topH1">HannahMacPhotography</h1>
+    <%- include ("../partials/header.ejs") %>
     <%- include ("../partials/nav.ejs") %>
   </header>
   <main>
-      <h1>Packages</h1>
-    <div>
-        <%= test %>    
+      <h1 class="center">Packages</h1>
+    <div class="container">
+      <div class="row">
+        <% result.forEach(function(result) { %>
+          <div class="col-md-4 indPackage">
+          <div id='packageImg'>
+            <img class='img-responsive' src='<%= result.packageimg %>' alt='"Image of " + <%= result.packagename %> + " on hannahmacphotography.com"' id='packageImg'>
+          </div>
+          <hr id="packageID">
+          <h2 class="packageNames"><%= result.packagename %></h2>
+          <h3><span class="formatCurrency"><%= currency %></span></h3>
+          <h3><%= result.packagehours %></h3>
+          <h3><%= result.packagelocationcount %><h3>
+          <p><%= result.packagedescription %></p>
+        </div>
+        <% }); %>
+      </div>
     </div>
   </main>
   <footer class="footer">

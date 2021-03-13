@@ -1,5 +1,7 @@
 
 require('dotenv').config();
+const formatCurrency = require('format-currency')
+
 
 const { Pool } = require('pg')
 const connectionString = process.env.DATABASE_URL;
@@ -12,14 +14,18 @@ module.exports = {
     getPackages: function (req, res){
         console.log("Getting packages...")
         // var id = [req.query.id];
-      
+
         const sql = "SELECT * FROM hmphoto.packages";
         pool.query(sql, function(err, result){
           if(err) {
             console.log("Error in query: ")
             console.log(err);
           }
-          res.json(JSON.stringify(result.rows))
+          currency = formatCurrency(result.packageprice);
+          res.render('pages/packages', {
+            result: result.rows,
+            currency: currency
+          })
         })
     },
     
@@ -36,8 +42,12 @@ module.exports = {
             console.log("Error in query: ")
             console.log(err);
           }
+          console.log("CHECK VALUE: " + results.username)
+          console.log("ROWS CHECK: " + results.rows)
+          console.log("ROW COUNT CHECK: " , JSON.stringify(results))
+          console.log("ROW LENGTH CHECK: " + JSON.stringify(results.length))
           console.log("LENGTH CHECK: " + results.length)
-          if (results.length > 0) {
+          if (results.rows != 0) {
             req.session.loggedin = true;
             req.session.username = username;
             res.redirect('/packageManagement');

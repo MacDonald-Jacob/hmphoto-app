@@ -51,12 +51,12 @@ INSERT INTO hmphoto.packages (mediaID, packageName, packagePrice, packageHours, 
 
 
 -- update
-UPDATE hmphoto.packages SET packageImg = '/hannahmacphoto/imagesH/dunes.jpg' WHERE packageID = 1;
-UPDATE hmphoto.packages SET packageImg = '/hannahmacphoto/imagesH/bridal.jpg' WHERE packageID = 2;
-UPDATE hmphoto.packages SET packageImg = '/hannahmacphoto/imagesH/weddingday2.jpg' WHERE packageID = 3;
-UPDATE hmphoto.packages SET packageImg = '/hannahmacphoto/imagesH/engagement2.jpg' WHERE packageID = 4;
-UPDATE hmphoto.packages SET packageImg = '/hannahmacphoto/imagesH/family.jpg' WHERE packageID = 5;
-UPDATE hmphoto.packages SET packageImg = '/hannahmacphoto/imagesH/weddingday.jpg' WHERE packageID = 6;
-UPDATE hmphoto.packages SET packageImg = '/hannahmacphoto/imagesH/engagement.jpg' WHERE packageID = 7;
-UPDATE hmphoto.packages SET packageImg = '/hannahmacphoto/imagesH/bridal2.jpg' WHERE packageID = 8;
-UPDATE hmphoto.packages SET packageImg = '/hannahmacphoto/imagesH/weddingday3.jpg' WHERE packageID = 9;
+UPDATE hmphoto.packages SET packageImg = '/images/dunes.jpg' WHERE packageID = 1;
+UPDATE hmphoto.packages SET packageImg = '/images/bridal.jpg' WHERE packageID = 2;
+UPDATE hmphoto.packages SET packageImg = '/images/weddingday2.jpg' WHERE packageID = 3;
+UPDATE hmphoto.packages SET packageImg = '/images/engagement2.jpg' WHERE packageID = 4;
+UPDATE hmphoto.packages SET packageImg = '/images/family.jpg' WHERE packageID = 5;
+UPDATE hmphoto.packages SET packageImg = '/images/weddingday.jpg' WHERE packageID = 6;
+UPDATE hmphoto.packages SET packageImg = '/images/engagement.jpg' WHERE packageID = 7;
+UPDATE hmphoto.packages SET packageImg = '/images/bridal2.jpg' WHERE packageID = 8;
+UPDATE hmphoto.packages SET packageImg = '/images/weddingday3.jpg' WHERE packageID = 9;
