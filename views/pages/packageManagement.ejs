@@ -8,12 +8,32 @@
       <%- include ("../partials/nav.ejs") %>
     </header>
     <main>
-        <h1>Package Management</h1>
-      
+        <h1 class="center">Package Management</h1>
+        
+        <div class="center">
+          <br><br><a href="/add-package" title="View the add package page">Add Package</a>
+        </div>
+        
+        <br><br><h3 class="center">Update Packages</h3>
+        
+        <div class="center">  
+        <table id="inventoryDisplay">
+          <thead>
+            <tr><th>Package Name</th><th> </th><th> </th></tr>
+          </thead>
+          <tbody>
+            <% result.forEach(function(result) { %>
+              <tr>
+                <td><%= result.packagename %></td>
+                <td><a href= '/update-package' title='View the update package page'>Modify</a></td>
+                <td><a href= '/delete-package' title='View the delete package page'>Delete</a></td>
+                <td></td>
+              </tr> 
+            <% }); %>
+          </tbody> 
+        </table>
+        </div>
 
-      <div>
-              
-      </div>
     </main>
     <footer class="footer">
       <%- include ("../partials/footer.ejs") %>

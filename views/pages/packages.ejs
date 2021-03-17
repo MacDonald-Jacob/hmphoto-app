@@ -20,9 +20,9 @@
           </div>
           <hr id="packageID">
           <h2 class="packageNames"><%= result.packagename %></h2>
-          <h3><span class="formatCurrency"><%= currency %></span></h3>
-          <h3><%= result.packagehours %></h3>
-          <h3><%= result.packagelocationcount %><h3>
+          <h3><span class="formatCurrency"><%= result.packageprice %></span></h3>
+          <h3>Hours: <%= result.packagehours %></h3>
+          <h3>Locations (optional): <%= result.packagelocationcount %><h3>
           <p><%= result.packagedescription %></p>
         </div>
         <% }); %>

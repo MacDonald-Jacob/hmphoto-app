@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ("../partials/head.ejs") %>
+</head>
+
+<body>
+  <header>
+    <%- include ("../partials/header.ejs") %>
+    <%- include ("../partials/nav.ejs") %>
+  </header>
+  <main>    
+      <div class="update-form">
+        <form id="updatePackageForm" action="/packages" method="post">
+            <h2 class="text-center">Update Package</h2>       
+            <div class="form-group">
+                <label class="required" for="mediaid">Service:</label><br>
+                <select id="mediaid" name="mediaid" class="form-control">
+                    <option value=1>Photo</option>
+                    <option value=2>Video</option>
+                    <option value=3>Photo and Video</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="required" for="packagename">Package Name:</label><br>
+                <input type="text" id="packagename" name="packagename" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label class="required" for="packageimg">Image Path:</label><br>
+                <input type="text" id="packageimg" name="packageimg" value="/images/bridal.jpg" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label class="required" for="packageprice">Package Price:</label><br>
+                <input type="text" id="packageprice" name="packageprice" class="form-control" required>  
+            </div>
+            <div class="form-group">
+                <label class="required" for="packagehours">Package Hours:</label><br>
+                <input type="text" id="packagehours" name="packagehours" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label class="required" for="packagelocationcount">Number of Locations:</label><br>
+                <input type="number" id="packagelocationcount" name="packagelocationcount" min="1" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label class="required" for="packagedescription">Description:</label><br>
+                <textarea id="packagedescription" name="packagedescription" rows="5" cols="26" form="updatePackageForm" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" name="submit" id="updatePackageebtn" value="Update Package" class="btn btn-primary btn-block">
+                <input type="hidden" name="action" value="updatePackage">
+                <input type="hidden" name="packageid" value="<%= %>">
+            </div>
+        </form>
+        </div>
+
+
+  </main>
+  <footer class="footer">
+    <%- include ("../partials/footer.ejs") %>
+  </footer>
+</body>
+
+</html>
