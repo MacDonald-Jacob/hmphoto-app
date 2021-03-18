@@ -25,8 +25,8 @@
             <% result.forEach(function(result) { %>
               <tr>
                 <td><%= result.packagename %></td>
-                <td><a href= '/update-package' title='View the update package page'>Modify</a></td>
-                <td><a href= '/delete-package' title='View the delete package page'>Delete</a></td>
+                <td><a href= '/update-package/<%=result.packageid%>' title='View the update package page'>Modify</a></td>
+                <td><a href= '/delete-package/<%=result.packageid%>' title='View the delete package page'>Delete</a></td>
                 <td></td>
               </tr> 
             <% }); %>

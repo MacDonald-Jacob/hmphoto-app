@@ -12,11 +12,6 @@ express()
   .use(session({secret: 'secret', resave: true, saveUninitialized: true}))
   .use(bodyParser.urlencoded({extended : true}))
   .use(bodyParser.json())
-  // .use(function(req, res){
-  //   if(req.session.loggedin = true){
-  //   res.locals.modal.authLogin = modal.authLogin
-  //   }
-  // })
   
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
@@ -26,11 +21,13 @@ express()
   .get('/login', (req, res) => res.render('pages/login', {message: message}))
   .get('/packageManagement', modal.pmDisplay)
   .get('/add-package', (req, res) => res.render('pages/add-package'))
-  .get('/update-package', (req, res) => res.render('pages/update-package'))
-  .get('/delete-package', (req, res) => res.render('pages/delete-package'))
-  .get('/logout', functions.handleLogout )
+  .get('/update-package/:id', (req, res) => res.render('pages/update-package'))
+  .get('/delete-package/:id', functions.deleteDisplay)
+  .get('/logout', functions.handleLogout)
   .post('/auth', modal.authLogin)
   .post('/add', modal.newPackage)
+  .post('/delete/:id', modal.deletePackage)
+
 
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));

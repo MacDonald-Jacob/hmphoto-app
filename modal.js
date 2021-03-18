@@ -105,7 +105,29 @@ module.exports = {
         res.end();
         })
       }
+    },
+    
+    deletePackage: function (req, res){
+      if (req.session.loggedin) {
+        var packageid = req.param('id');
+        const sql = 'DELETE FROM hmphoto.packages WHERE packageid = $1::int';
+        const value = [packageid]
+        pool.query(sql, value, function(err){
+          if(err) {
+            console.log("Error in query: ")
+            console.log(err);
+          }
+          console.log(sql, value);
+        res.redirect('/packages')
+        res.end();
+        })
+      } else {
+        message = "Please login to view this page!"
+        res.render('pages/login', {
+          message: message
+        })
+        res.end();
+      }
     }
-
 }  
       
