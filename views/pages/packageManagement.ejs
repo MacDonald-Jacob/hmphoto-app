@@ -11,28 +11,29 @@
         <h1 class="center">Package Management</h1>
         
         <div class="center">
-          <br><br><a href="/add-package" title="View the add package page">Add Package</a>
+          <br><br><a class="btn btn-primary" href="/add-package" title="View the add package page">Add Package</a>
         </div>
         
         <br><br><h3 class="center">Update Packages</h3>
         
-        <div class="center">  
-        <table id="inventoryDisplay">
-          <thead>
-            <tr><th>Package Name</th><th> </th><th> </th></tr>
+        <table class="table table-striped" id="inventoryDisplay">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Package Name</th>
+              <th> </th>
+              <th> </th>
+            </tr>
           </thead>
           <tbody>
             <% result.forEach(function(result) { %>
               <tr>
                 <td><%= result.packagename %></td>
-                <td><a href= '/update-package/<%=result.packageid%>' title='View the update package page'>Modify</a></td>
-                <td><a href= '/delete-package/<%=result.packageid%>' title='View the delete package page'>Delete</a></td>
-                <td></td>
+                <td><a class="btn btn-primary" href= '/update-package/<%=result.packageid%>' title='View the update package page'>Modify</a></td>
+                <td><a class="btn btn-danger" href= '/delete-package/<%=result.packageid%>' title='View the delete package page'>Delete</a></td>
               </tr> 
             <% }); %>
           </tbody> 
         </table>
-        </div>
 
     </main>
     <footer class="footer">

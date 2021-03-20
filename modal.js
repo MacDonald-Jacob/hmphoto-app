@@ -11,8 +11,7 @@ ssl: {
 module.exports = {
     getPackages: function (req, res){
         console.log("Getting packages...")
-
-        const sql = "SELECT * FROM hmphoto.packages";
+        const sql = "SELECT * FROM hmphoto.packages ORDER BY mediaid, packageid";
         pool.query(sql, function(err, result){
           if(err) {
             console.log("Error in query: ")
@@ -27,7 +26,7 @@ module.exports = {
     pmDisplay: function (req, res){
       if (req.session.loggedin) {
           loginMessage = 'Welcome back, ' + req.session.username + '!'
-          const sql = "SELECT p.packageid, p.packagename, m.service FROM hmphoto.packages p LEFT JOIN hmphoto.media m ON p.mediaID = m.mediaID ORDER BY p.packageid";
+          const sql = "SELECT p.packageid, p.packagename, p.mediaid, m.service FROM hmphoto.packages p LEFT JOIN hmphoto.media m ON p.mediaID = m.mediaID ORDER BY p.mediaid, p.packageid";
           pool.query(sql, function(err, result){
           if(err) {
             console.log("Error in query: ")
