@@ -21,12 +21,14 @@ express()
   .get('/login', (req, res) => res.render('pages/login', {message: message}))
   .get('/packageManagement', modal.pmDisplay)
   .get('/add-package', (req, res) => res.render('pages/add-package'))
-  .get('/update-package/:id', (req, res) => res.render('pages/update-package'))
+  .get('/update-package/:id', modal.getPackagesById)
   .get('/delete-package/:id', functions.deleteDisplay)
   .get('/logout', functions.handleLogout)
   .post('/auth', modal.authLogin)
   .post('/add', modal.newPackage)
   .post('/delete/:id', modal.deletePackage)
+  .post('/update/:id', modal.updatePackage)
+
 
 
 

@@ -114,11 +114,67 @@ module.exports = {
         pool.query(sql, value, function(err){
           if(err) {
             console.log("Error in query: ")
-            console.log(err);
           }
           console.log(sql, value);
         res.redirect('/packages')
         res.end();
+        })
+      } else {
+        message = "Please login to view this page!"
+        res.render('pages/login', {
+          message: message
+        })
+        res.end();
+      }
+    },
+
+    updatePackage: function (req, res){
+      if (req.session.loggedin) {
+        var mediaid = req.body.mediaid;
+        var packagename = req.body.packagename;
+        var packageprice = req.body.packageprice;
+        var packagehours = req.body.packagehours;
+        var packageimg = req.body.packageimg;
+        var packagelocationcount = req.body.packagelocationcount;
+        var packagedescription = req.body.packagedescription;
+        var packageid = req.param('id');
+
+        const sql = 'UPDATE hmphoto.packages SET mediaid = $1::INT, packagename = $2::VARCHAR, packageprice = $3::decimal, packagehours = $4::VARCHAR, packageimg = $5::VARCHAR, packagelocationcount = $6::SMALLINT, packagedescription = $7::TEXT WHERE packageid = $8::INT';
+        const value = [mediaid, packagename, packageprice, packagehours, packageimg, packagelocationcount, packagedescription, packageid]
+        pool.query(sql, value, function(err){
+          if(err) {
+            console.log("Error in query: ")
+          }
+          console.log(sql, value);
+        res.redirect('/packages')
+        res.end();
+        })
+      } else {
+        message = "Please login to view this page!"
+        res.render('pages/login', {
+          message: message
+        })
+        res.end();
+      }
+
+    },
+
+    getPackagesById: function (req, res){
+      if (req.session.loggedin) {
+        var packageid = req.param('id');
+        console.log("Getting package Details...")
+        console.log(packageid)
+        const sql = "SELECT * FROM hmphoto.packages WHERE packageid = $1::int";
+        const value = [packageid]
+        pool.query(sql, value, function(err, result){
+          if(err) {
+            console.log("Error in query: ")
+            console.log(err);
+          }
+          console.log("RETRUN" + JSON.stringify(result.rows))
+          res.render('pages/update-package', {
+            result: result.rows,
+          })
         })
       } else {
         message = "Please login to view this page!"

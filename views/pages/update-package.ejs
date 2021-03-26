@@ -9,41 +9,69 @@
     <%- include ("../partials/header.ejs") %>
     <%- include ("../partials/nav.ejs") %>
   </header>
-  <main>    
+  <main>
+
+    <% result.forEach(function(result) { %>
+          <% packageid = result.packageid %>
+          <% packagename = result.packagename %>
+          <% packageimg = result.packageimg %>
+          <% packageprice = result.packageprice %>
+          <% packagehours = result.packagehours %>
+          <% packagelocationcount = result.packagelocationcount %>
+          <% packagedescription = result.packagedescription %>
+          <% console.log(packagedescription) %>
+          <% mediaid = result.mediaid %>
+      <% }); %>
+
       <div class="update-form">
-        <form id="updatePackageForm" action="/packages" method="post">
+        <form id="updatePackageForm" action="/update/<%= packageid %>" method="post">
             <h2 class="text-center">Update Package</h2>       
             <div class="form-group">
                 <label class="required" for="mediaid">Service:</label><br>
                 <select id="mediaid" name="mediaid" class="form-control">
-                    <option value=1>Photo</option>
-                    <option value=2>Video</option>
-                    <option value=3>Photo and Video</option>
+                    <option value=1
+                    <% if (mediaid === 1){
+                        var selected = "selected"
+                    }else{ selected = ""} %>
+                    <%= selected %>
+                    >Photo</option>
+                    <option value=2
+                    <% if (mediaid === 2){
+                         var selected = "selected" 
+                    }else{ selected = ""} %>
+                    <%= selected %>
+                    >Video</option>
+                    <option value=3
+                    <% if (mediaid === 3){
+                        var selected = "selected"
+                    }else{ selected = ""} %>
+                    <%= selected %>
+                    >Photo and Video</option>
                 </select>
             </div>
             <div class="form-group">
                 <label class="required" for="packagename">Package Name:</label><br>
-                <input type="text" id="packagename" name="packagename" class="form-control" required>
+                <input type="text" id="packagename" value="<%=packagename%>" name="packagename" class="form-control" required>
             </div>
             <div class="form-group">
                 <label class="required" for="packageimg">Image Path:</label><br>
-                <input type="text" id="packageimg" name="packageimg" value="/images/bridal.jpg" class="form-control" required>
+                <input type="text" id="packageimg" value="<%=packageimg%>" name="packageimg" value="/images/bridal.jpg" class="form-control" required>
             </div>
             <div class="form-group">
                 <label class="required" for="packageprice">Package Price:</label><br>
-                <input type="text" id="packageprice" name="packageprice" class="form-control" required>  
+                <input type="text" id="packageprice" value="<%=packageprice%>" name="packageprice" class="form-control" required>  
             </div>
             <div class="form-group">
                 <label class="required" for="packagehours">Package Hours:</label><br>
-                <input type="text" id="packagehours" name="packagehours" class="form-control" required>
+                <input type="text" id="packagehours" value="<%=packagehours%>" name="packagehours" class="form-control" required>
             </div>
             <div class="form-group">
                 <label class="required" for="packagelocationcount">Number of Locations:</label><br>
-                <input type="number" id="packagelocationcount" name="packagelocationcount" min="1" class="form-control" required>
+                <input type="number" id="packagelocationcount" value="<%=packagelocationcount%>" name="packagelocationcount" min="1" class="form-control" required>
             </div>
             <div class="form-group">
                 <label class="required" for="packagedescription">Description:</label><br>
-                <textarea id="packagedescription" name="packagedescription" rows="5" cols="26" form="updatePackageForm" class="form-control" required></textarea>
+                <textarea id="packagedescription" name="packagedescription" rows="5" cols="26" form="updatePackageForm" class="form-control" required><%= packagedescription%></textarea>
             </div>
             <div class="form-group">
                 <input type="submit" name="submit" id="updatePackageebtn" value="Update Package" class="btn btn-primary btn-block">

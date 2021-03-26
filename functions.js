@@ -1,3 +1,4 @@
+var modal = require('./modal');
 module.exports = {    
     handleLogout: function (req, res){
         req.session.destroy(function(err){
@@ -26,6 +27,22 @@ module.exports = {
             })
         res.end();
         }
-    }
+    },
+
+    // UpdateDisplay: function(req, res, getPackagesById){
+    //     var packageid = req.param('id');
+    //     if (req.session.loggedin) {
+    //         // result = modal.getPackagesById(packageid);
+    //         console.log("CHECK" + JSON.stringify(result))
+    //         console.log("CHECK2" + result)
+    //         res.render('pages/update-package', {
+    //             result: result,
+    //         })
+    //         result = modal.getPackagesById(packageid)
+
+    //     res.end()
+    //     }
+
+    // }
         
 }
